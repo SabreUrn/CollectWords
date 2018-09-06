@@ -1,5 +1,6 @@
 package com.example.sabreurn.collectwords;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -15,7 +16,8 @@ public class SecondActivity extends AppCompatActivity {
 	EditText firstNumberEditText;
 	EditText secondNumberEditText;
 	Button calcButton;
-	EditText resultEditText;
+
+	public static final String RESULT = "result";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -25,18 +27,18 @@ public class SecondActivity extends AppCompatActivity {
 		firstNumberEditText = findViewById(R.id.firstNumberEditText);
 		secondNumberEditText = findViewById(R.id.secondNumberEditText);
 		calcButton = findViewById(R.id.calcButton);
-		resultEditText = findViewById(R.id.resultEditText);
-		resultEditText.setInputType(InputType.TYPE_NULL);
 
 		calcButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				int firstNum = Integer.parseInt(firstNumberEditText.getText().toString());
-				int secondNum = Integer.parseInt(secondNumberEditText.getText().toString());
-				int result = firstNum + secondNum;
-				resultEditText.setInputType(InputType.TYPE_CLASS_TEXT);
-				resultEditText.setText(Integer.toString(result));
-				resultEditText.setInputType(InputType.TYPE_NULL);
+				double firstNum = Double.parseDouble(firstNumberEditText.getText().toString());
+				double secondNum = Double.parseDouble(secondNumberEditText.getText().toString());
+				double result = firstNum + secondNum;
+
+				Intent data = new Intent();
+				data.putExtra(RESULT, result);
+				setResult(RESULT_OK, data);
+				finish();
 			}
 		});
 	}

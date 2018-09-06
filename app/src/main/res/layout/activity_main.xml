@@ -30,21 +30,21 @@
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:gravity="center"
-		android:onClick="addToList"
+		android:onClick="viewAddToList"
 		android:text="Add" />
 
 	<Button
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:gravity="center"
-		android:onClick="clearList"
+		android:onClick="viewClearList"
 		android:text="Clear" />
 
 	<Button
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:gravity="center"
-		android:onClick="printList"
+		android:onClick="viewPrintList"
 		android:text="Print" />
 
 	<TextView

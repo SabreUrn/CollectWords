@@ -34,22 +34,35 @@ public class MainActivity extends AppCompatActivity {
 		imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
 	}
 
-	public void addToList(View view) {
-		inputList.add(inputFieldEditText.getText().toString());
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if(resultCode == RESULT_OK) {
+			double result = data.getDoubleExtra(SecondActivity.RESULT, 0);
+			addToList(Double.toString(result));
+		}
+	}
+
+	public void addToList(String entry) {
+		inputList.add(entry);
 		inputFieldEditText.getText().clear();
 	}
 
-	public void clearList(View view) {
+
+	public void viewAddToList(View view) {
+		addToList(inputFieldEditText.getText().toString());
+	}
+
+	public void viewClearList(View view) {
 		inputList.clear();
 	}
 
-	public void printList(View view) {
+	public void viewPrintList(View view) {
 		String contents = TextUtils.join(", ", inputList);
 		listContentsTextView.setText(contents);
 	}
 
 	public void goSecondActivity(View view) {
 		Intent intent = new Intent(this, SecondActivity.class);
-		startActivity(intent);
+		startActivityForResult(intent, 666);
 	}
 }
