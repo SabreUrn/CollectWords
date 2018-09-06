@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/inputFieldEditText"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+    >
+        <requestFocus/>
+    </EditText>
+
+    <Button
+        android:id="@+id/addToListButton"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="Add"
+        android:gravity="center"
+    />
+
+    <Button
+        android:id="@+id/clearListButton"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="Clear"
+        android:gravity="center"
+    />
+
+    <Button
+        android:id="@+id/printListButton"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="Print"
+        android:gravity="center"
+    />
+
+    <TextView
+        android:id="@+id/listContentsTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+    />
+
+</android.support.constraint.ConstraintLayout>
