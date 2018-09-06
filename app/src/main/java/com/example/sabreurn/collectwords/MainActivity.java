@@ -1,8 +1,11 @@
 package com.example.sabreurn.collectwords;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -12,47 +15,41 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText inputFieldEditText;
-    Button addToListButton;
-    Button clearListButton;
-    Button printListButton;
-    TextView listContentsTextView;
-    List<String> inputList;
+	EditText inputFieldEditText;
+	Button addToListButton;
+	Button clearListButton;
+	Button printListButton;
+	TextView listContentsTextView;
+	List<String> inputList;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        inputFieldEditText = findViewById(R.id.inputFieldEditText);
-        addToListButton = findViewById(R.id.addToListButton);
-        clearListButton = findViewById(R.id.clearListButton);
-        printListButton = findViewById(R.id.printListButton);
-        listContentsTextView = findViewById(R.id.listContentsTextView);
-        inputList = new ArrayList<>();
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		inputFieldEditText = findViewById(R.id.inputFieldEditText);
+		addToListButton = findViewById(R.id.addToListButton);
+		clearListButton = findViewById(R.id.clearListButton);
+		printListButton = findViewById(R.id.printListButton);
+		listContentsTextView = findViewById(R.id.listContentsTextView);
+		inputList = new ArrayList<>();
 
-        addToListButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                inputList.add(inputFieldEditText.getText().toString());
-            }
-        });
+		//show keyboard automatically
+		InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+		//imm.showSoftInput(inputFieldEditText, InputMethodManager.SHOW_IMPLICIT);
+		imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
+	}
 
-        clearListButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                inputList.clear();
-            }
-        });
+	public void addToList(View view) {
+		inputList.add(inputFieldEditText.getText().toString());
+		inputFieldEditText.getText().clear();
+	}
 
-        printListButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String contents = "";
-                for(String s : inputList) {
-                    contents += s + "\t";
-                }
-                listContentsTextView.setText(contents);
-            }
-        });
-    }
+	public void clearList(View view) {
+		inputList.clear();
+	}
+
+	public void printList(View view) {
+		String contents = TextUtils.join(", ", inputList);
+		listContentsTextView.setText(contents);
+	}
 }
