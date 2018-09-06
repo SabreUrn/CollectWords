@@ -27,7 +27,6 @@
 	</EditText>
 
 	<Button
-		android:id="@+id/addToListButton"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:gravity="center"
@@ -35,7 +34,6 @@
 		android:text="Add" />
 
 	<Button
-		android:id="@+id/clearListButton"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:gravity="center"
@@ -43,7 +41,6 @@
 		android:text="Clear" />
 
 	<Button
-		android:id="@+id/printListButton"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:gravity="center"
@@ -54,5 +51,20 @@
 		android:id="@+id/listContentsTextView"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content" />
+
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_weight="1"
+		android:gravity="center|bottom"
+		android:orientation="vertical">
+
+		<Button
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:onClick="goSecondActivity"
+			android:text="go to calc"/>
+	</LinearLayout>
 
 </LinearLayout>

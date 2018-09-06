@@ -1,6 +1,7 @@
 package com.example.sabreurn.collectwords;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -16,9 +17,6 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
 	EditText inputFieldEditText;
-	Button addToListButton;
-	Button clearListButton;
-	Button printListButton;
 	TextView listContentsTextView;
 	List<String> inputList;
 
@@ -27,9 +25,6 @@ public class MainActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		inputFieldEditText = findViewById(R.id.inputFieldEditText);
-		addToListButton = findViewById(R.id.addToListButton);
-		clearListButton = findViewById(R.id.clearListButton);
-		printListButton = findViewById(R.id.printListButton);
 		listContentsTextView = findViewById(R.id.listContentsTextView);
 		inputList = new ArrayList<>();
 
@@ -51,5 +46,10 @@ public class MainActivity extends AppCompatActivity {
 	public void printList(View view) {
 		String contents = TextUtils.join(", ", inputList);
 		listContentsTextView.setText(contents);
+	}
+
+	public void goSecondActivity(View view) {
+		Intent intent = new Intent(this, SecondActivity.class);
+		startActivity(intent);
 	}
 }
